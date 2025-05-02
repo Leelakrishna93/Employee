@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <style>
+            body{
+                background-color: aquamarine;
+            }
+        </style>
+</head>
+<body>
+    <div class="container mt-5">
+    <h1 class="mb-5  bg-primary text-center text-white p-3">Employee DataBase Management System Capestone Project</h1>
+    <a href="{% url "add_employee" %}" class="btn btn-warning mb-3">Add Employee</a>
+    <a href="{% url 'logout' %}" class="btn btn-danger float-end">Log Out</a>
+
+    <table class="table table-hover tabl-bordered border-danger">
+        <thead>
+        <tr>
+            <th>Smo</th>
+            <th>Sull name</th>
+            <th>Desigination</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in employees %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td> <a href="{% url 'employee_detail' x.id %}">{{x.first_name}}{{x.last_name}}</a></td>
+            <td>{{x.designation}}</td>
+            <td>{{x.phone_number}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    <footer class="text-center mt-5 bg-warning p-3">
+        <div class="row">
+            <div class="col">
+                <h3>Copyright &copy; Employee DataBase</h3>
+                <h6>All Rights Reserved</h6>
+                <h5>Developed and Maintained By CodingBrains Technologies</h5>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
